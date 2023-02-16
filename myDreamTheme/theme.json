@@ -1,44 +1,49 @@
-{
-    "$schema": "https://schemas.wp.org/trunk/theme.json",
-    "version": 2,
-    "settings": {
-        "appearanceTools": true,
+{   "version": 2,
+    "$schema": "https://schemas.wp.org/wp/6.1/theme.json",
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"palette": [
+				{
+					"color": "#000000",
+					"name": "Base",
+					"slug": "base"
+				},
+				{
+					"color": "#afacac",
+					"name": "Contrast",
+					"slug": "contrast"
+				},
+				{
+					"color": "#f9f9f9",
+					"name": "Primary",
+					"slug": "primary"
+				},
+				{
+					"color": "#824141",
+					"name": "Secondary",
+					"slug": "secondary"
+				},
+				{
+					"color": "#fa1212",
+					"name": "Tertiary",
+					"slug": "tertiary"
+				}
+			]
+		},
 		"layout": {
 			"contentSize": "920px",
 			"wideSize": "1280px"
 		},
-		"color": {
-			"palette": [
+		"typography": {
+			"fontFamilies": [
 				{
-					"slug": "base",
-					"name": "Base"
-				},
-				{
-					"slug": "contrast",
-					"name": "Contrast"
-				},
-				{
-					"slug": "primary",
-					"name": "Primary"
-				},
-				{
-					"slug": "secondary",
-					"name": "Secondary"
-				},
-				{
-					"slug": "tertiary",
-					"name": "Tertiary"
+					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
+					"name": "System Font",
+					"slug": "system-font"
 				}
 			]
-		},
-        "typography": {
-            "fontFamilies": [
-                {
-                    "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
-                    "name": "System Font",
-                    "slug": "system-font"
-                }
-           ]
-        }
-    }
+		}
+	}
+	
 }
