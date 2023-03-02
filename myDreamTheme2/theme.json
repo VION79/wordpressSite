@@ -2,17 +2,35 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 2,
   "settings": {
-    "typography": {
-      "fontFamilies": [
+    "appearanceTools": true,
+    "color": {
+      "palette": [
         {
-          "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
-          "name": "System Font",
-          "slug": "system-font"
+          "color": "#FFF5E1",
+          "name": "Base",
+          "slug": "base"
+        },
+        {
+          "color": "#781C68",
+          "name": "Contrast",
+          "slug": "contrast"
         }
       ]
-    }
-  },
-  
-  "styles": {
+    },
+    "typography": {
+      "fontFamilies": [
+                        {
+                          "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
+                          "name": "System Font",
+                          "slug": "system-font"
+                        }
+                      ]
+                  }
+              },
+     
+    "styles": {
+      "typography": {
+      "fontFamily": "var(--wp--preset--font-family--system-font)"
+  }
   }
 }
