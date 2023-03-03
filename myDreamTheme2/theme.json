@@ -5,18 +5,39 @@
     "appearanceTools": true,
     "color": {
       "palette": [
-        {
-          "color": "#FFF5E1",
-          "name": "Base",
-          "slug": "base"
-        },
-        {
-          "color": "#781C68",
-          "name": "Contrast",
-          "slug": "contrast"
-        }
-      ]
-    },
+                    {
+                      "color": "#FFF5E1",
+                      "name": "Base",
+                      "slug": "base"
+                    },
+                    {
+                      "color": "#781C68",
+                      "name": "Contrast",
+                      "slug": "contrast"
+                    }
+                  ]
+              },
+      "layout": {
+                  "contentSize": "650px",
+                  "wideSize": "1000px"
+                },
+      "spacing": {
+                  "spacingScale": {
+                                    "operator": "+",
+                                    "increment": 0.5,
+                                    "steps": 9,
+                                    "mediumStep": 1.5,
+                                    "unit": "rem"
+                                  },
+                  "units": [
+                              "%",
+                              "px",
+                              "em",
+                              "rem",
+                              "vh",
+                              "vw"
+                            ]
+                  },
     "typography": {
       "fontFamilies": [
                         {
