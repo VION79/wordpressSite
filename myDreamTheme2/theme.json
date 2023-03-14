@@ -1,4 +1,29 @@
 {
+	"customTemplates": [
+		{
+			"name": "page-alternative",
+			"postTypes": [
+				"page"
+			],
+			"title": "Page Alternative"
+		}, 
+		{
+			"name": "post-alternative",
+			"postTypes": [
+				"post"
+			],
+			"title": "Post Alternative"
+		},
+	],
+
+	"templateParts": [
+		{
+			"area": "uncategorized",
+			"name": "post-meta",
+			"title": "Post Meta"
+		},
+	],
+	
 	"settings": {
 		"appearanceTools": true,
 		"color": {
