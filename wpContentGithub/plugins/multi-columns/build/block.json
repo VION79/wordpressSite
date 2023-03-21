@@ -4,8 +4,8 @@
   "name": "create-block/multi-columns",
   "version": "0.1.0",
   "title": "Multi Columns",
-  "category": "widgets",
-  "icon": "smiley",
+  "category": "design",
+  "icon": "columns",
   "description": "Example block scaffolded with Create Block tool.",
   "supports": {
     "html": false

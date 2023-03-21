@@ -32,7 +32,7 @@ import './editor.scss';
 export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
-			{ __( 'Multi Columns – hello from the editor!', 'multi-columns' ) }
+			{ __( 'VION79 Multi Columns – hello from the editor!', 'multi-columns' ) }
 		</p>
 	);
 }
