@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from "@wordpress/block-editor";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +29,20 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit( { attributes, setAttributes } ) {
+	
+	const onChangeContent = ( val ) => {
+		setAttributes( { content: val } );
+	};
+	
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'VION79 Multi Columns – hello from the editor!', 'multi-columns' ) }
-		</p>
-	);
+		
+		<RichText
+			{ ...useBlockProps() }
+			tagName="p"
+			onChange={ onChangeContent }
+			value={ attributes.content }
+			placeholder="Enter some text here..."
+		/>
+	)
 }
