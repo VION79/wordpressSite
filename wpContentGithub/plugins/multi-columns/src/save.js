@@ -19,7 +19,7 @@ export default function save( { attributes } ) {
     return (
         <RichText.Content
             { ...useBlockProps.save() }
-            tagName="p"
+            tagName="div"
             value={ attributes.content }
         />
 	);

@@ -39,7 +39,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		
 		<RichText
 			{ ...useBlockProps() }
-			tagName="p"
+			tagName="div"
 			onChange={ onChangeContent }
 			value={ attributes.content }
 			placeholder="Enter some text here..."
