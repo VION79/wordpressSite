@@ -8,7 +8,12 @@
   "icon": "columns",
   "description": "Example block scaffolded with Create Block tool.",
   "supports": {
-    "html": false
+    "html": false,
+    "color": {},
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "textdomain": "multi-columns",
   "editorScript": "file:./index.js",
@@ -18,7 +23,30 @@
     "content": {
       "type": "string",
       "source": "html",
-      "selector": "p"
+      "selector": "div"
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "text": "#3a3a3a",
+          "background": "#fbf9f4"
+        },
+        "spacing": {
+          "padding": {
+            "top": "20px",
+            "right": "20px",
+            "bottom": "20px",
+            "left": "20px"
+          },
+          "margin": {
+            "top": "20px",
+            "right": "20px",
+            "bottom": "20px",
+            "left": "20px"
+          }
+        }
+      }
     }
   }
 }

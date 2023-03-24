@@ -64,7 +64,7 @@ function Edit(_ref) {
     });
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
-    tagName: "p",
+    tagName: "div",
     onChange: onChangeContent,
     value: attributes.content,
     placeholder: "Enter some text here..."
@@ -166,7 +166,7 @@ function save(_ref) {
     attributes
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(), {
-    tagName: "p",
+    tagName: "div",
     value: attributes.content
   }));
 }
@@ -270,7 +270,7 @@ function _extends() {
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/multi-columns","version":"0.1.0","title":"Multi Columns","category":"design","icon":"columns","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"multi-columns","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"content":{"type":"string","source":"html","selector":"p"}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/multi-columns","version":"0.1.0","title":"Multi Columns","category":"design","icon":"columns","description":"Example block scaffolded with Create Block tool.","supports":{"html":false,"color":{},"spacing":{"margin":true,"padding":true}},"textdomain":"multi-columns","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"content":{"type":"string","source":"html","selector":"div"},"style":{"type":"object","default":{"color":{"text":"#3a3a3a","background":"#fbf9f4"},"spacing":{"padding":{"top":"20px","right":"20px","bottom":"20px","left":"20px"},"margin":{"top":"20px","right":"20px","bottom":"20px","left":"20px"}}}}}}');
 
 /***/ })
 
