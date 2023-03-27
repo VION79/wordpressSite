@@ -7,11 +7,19 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+/*
 .wp-block-create-block-multi-columns {
-  /*
-  background-color: #f6f6f6;
-  color: #000000;
-  Above default colors are changed via block.json under attributes/style instead of here*/
+
+	background-color: #f6f6f6;
+	color: #000000;
+	Above default colors are changed via block.json under attributes/style instead of here
+	padding: 2px;
+
+}
+*/
+.wp-block-create-block-multi-columns {
+  background-color: #21759b;
+  color: #fff;
   padding: 2px;
 }
 

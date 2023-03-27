@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { useBlockProps, RichText, InspectorControls } from "@wordpress/block-editor";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,6 +20,8 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+
+import { PanelBody, RangeControl } from '@wordpress/components';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,18 +33,36 @@ import './editor.scss';
  */
 export default function Edit( { attributes, setAttributes } ) {
 	
+	const { columnCount } = attributes;
+	const columnStyles = { columnCount };
+	
 	const onChangeContent = ( val ) => {
 		setAttributes( { content: val } );
 	};
+	const onChangeColumnCount = ( val ) => {
+		setAttributes( { columnCount: val } );
+	};
 	
 	return (
-		
+		<>
+		<InspectorControls>
+			<PanelBody>
+				<RangeControl
+					label="Columns"
+					value={ columnCount }
+					onChange={ onChangeColumnCount }
+					min={ 2 }
+					max={ 6 }
+				/>
+			</PanelBody>
+		</InspectorControls>
 		<RichText
-			{ ...useBlockProps() }
+			{ ...useBlockProps({ style: columnStyles }) }
 			tagName="div"
 			onChange={ onChangeContent }
 			value={ attributes.content }
 			placeholder="Enter some text here..."
 		/>
+		</>
 	)
 }

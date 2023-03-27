@@ -20,6 +20,10 @@
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
   "attributes": {
+    "columnCount": {
+      "type": "integer",
+      "default": 4
+    },
     "content": {
       "type": "string",
       "source": "html",
