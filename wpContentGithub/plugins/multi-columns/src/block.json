@@ -20,6 +20,14 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"attributes": {
+		"columnGap": {
+			"type": "integer",
+			"default": 40
+		  },
+		"columnWidth": {
+			"type": "integer",
+			"default": 200
+		  },		
 		"columnCount": {
 			"type": "integer",
 			"default": 4

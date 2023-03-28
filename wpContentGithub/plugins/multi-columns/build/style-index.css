@@ -17,6 +17,20 @@
 
 }
 */
+/*
+
+.wp-block-create-block-multi-columns {
+    background-color: #21759b;
+    color: #fff;
+    padding: 2px;
+	/*I could hardcode below attributes but in order to allow the user to be able to change I need to code them via the process 
+	column-width: 250px;
+    column-gap: 2.5rem;
+    column-rule: 4px dotted red;
+
+}
+
+*/
 .wp-block-create-block-multi-columns {
   background-color: #21759b;
   color: #fff;

@@ -19,6 +19,9 @@ import { useBlockProps, RichText, InspectorControls } from "@wordpress/block-edi
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
+
+import NumberControl from './components/number-control';
+
 import './editor.scss';
 
 import { PanelBody, RangeControl } from '@wordpress/components';
@@ -33,8 +36,8 @@ import { PanelBody, RangeControl } from '@wordpress/components';
  */
 export default function Edit( { attributes, setAttributes } ) {
 	
-	const { columnCount } = attributes;
-	const columnStyles = { columnCount };
+	const { columnCount, columnWidth, columnGap } = attributes;
+	const columnStyles = { columnCount, columnWidth, columnGap };
 	
 	const onChangeContent = ( val ) => {
 		setAttributes( { content: val } );
@@ -42,17 +45,38 @@ export default function Edit( { attributes, setAttributes } ) {
 	const onChangeColumnCount = ( val ) => {
 		setAttributes( { columnCount: val } );
 	};
+	const onChangeColumnWidth = ( val ) => {
+		setAttributes( { columnWidth: Number( val ) } );
+	};
+	const onChangeColumnGap = ( val ) => {
+		setAttributes( { columnGap: Number( val ) } );
+	};
 	
 	return (
 		<>
 		<InspectorControls>
-			<PanelBody>
+			<PanelBody title="Column Settings">
 				<RangeControl
 					label="Columns"
 					value={ columnCount }
 					onChange={ onChangeColumnCount }
 					min={ 2 }
 					max={ 6 }
+				/>
+				<NumberControl
+                    label="Width"
+                    value={ columnWidth }
+                    onChange={ onChangeColumnWidth }
+                    min={ 120 }
+                    max={ 500 }
+                    step={ 10 }
+                />
+				<NumberControl
+					label="Gap"
+					onChange={ onChangeColumnGap }
+					value={ columnGap }
+					min={ 10 }
+					max={ 100 }
 				/>
 			</PanelBody>
 		</InspectorControls>
