@@ -44,11 +44,6 @@
       "type": "integer",
       "default": 4
     },
-    "content": {
-      "type": "string",
-      "source": "html",
-      "selector": "div"
-    },
     "style": {
       "type": "object",
       "default": {
