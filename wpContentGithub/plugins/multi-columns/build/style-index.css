@@ -32,9 +32,29 @@
 
 */
 .wp-block-create-block-multi-columns {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
+  box-sizing: border-box;
+  -moz-column-fill: balance;
+       column-fill: balance;
+}
+.wp-block-create-block-multi-columns.is-style-drop-cap p:first-of-type:first-letter {
+  color: #b8b8b8;
+  float: left;
+  font-size: 3.8rem;
+  line-height: 3.5rem;
+  padding-right: 0.33rem;
+}
+.wp-block-create-block-multi-columns.is-style-box-shadow {
+  box-shadow: 10px 5px 5px teal;
+}
+.wp-block-create-block-multi-columns.is-style-drop-cap-box-shadow {
+  box-shadow: 10px 5px 5px teal;
+}
+.wp-block-create-block-multi-columns.is-style-drop-cap-box-shadow p:first-of-type:first-letter {
+  color: #b8b8b8;
+  float: left;
+  font-size: 3.8rem;
+  line-height: 3.5rem;
+  padding-right: 0.33rem;
 }
 
 /*# sourceMappingURL=style-index.css.map*/
