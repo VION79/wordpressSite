@@ -48,6 +48,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		columnRuleStyle,
 		columnRuleWidth,
 		columnRuleColor,
+		dropCapColor
 	} = attributes;
 	const columnStyles = {
 		columnCount,
@@ -56,6 +57,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		columnRuleStyle,
 		columnRuleWidth,
 		columnRuleColor,
+		'--drop-cap-color': dropCapColor,
 	};
 	const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/image', 'core/pullquote', 'core/separator' ];
 	const TEMPLATE_PARAGRAPHS = [
@@ -86,6 +88,10 @@ export default function Edit( { attributes, setAttributes } ) {
 	const onChangeColumnRuleColor = ( val ) => {
 		setAttributes( { columnRuleColor: val } );
 	};
+	const onChangeDropCapColor = ( val ) => {
+		setAttributes( { dropCapColor: val } );
+	};
+	
 	
 	return (
 		<>
@@ -165,6 +171,11 @@ export default function Edit( { attributes, setAttributes } ) {
 							label: __('Separator colour', 'multi-columns'),
 							value: columnRuleColor,
 							onChange: onChangeColumnRuleColor,
+						},
+						{
+							value: dropCapColor,
+							onChange: onChangeDropCapColor,
+							label: __( 'Drop-Cap colour', 'multi-columns' ),
 						},
 					] }>
 			</PanelColorSettings>

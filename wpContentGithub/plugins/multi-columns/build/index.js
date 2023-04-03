@@ -127,7 +127,8 @@ function Edit(_ref) {
     columnGap,
     columnRuleStyle,
     columnRuleWidth,
-    columnRuleColor
+    columnRuleColor,
+    dropCapColor
   } = attributes;
   const columnStyles = {
     columnCount,
@@ -135,7 +136,8 @@ function Edit(_ref) {
     columnGap,
     columnRuleStyle,
     columnRuleWidth,
-    columnRuleColor
+    columnRuleColor,
+    '--drop-cap-color': dropCapColor
   };
   const ALLOWED_BLOCKS = ['core/heading', 'core/paragraph', 'core/image', 'core/pullquote', 'core/separator'];
   const TEMPLATE_PARAGRAPHS = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus, lectus non interdum cursus, arcu sapien mollis lacus, et tincidunt odio nisi ut purus. Duis eleifend, magna placerat faucibus tincidunt, orci nulla ornare tortor, eget egestas tortor nunc quis sem. Cras in tortor justo. Nulla consectetur leo vel blandit consectetur. Fusce quis sapien ante. Vestibulum non varius augue, et ultricies urna. Integer hendrerit suscipit nibh.', 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras vestibulum mauris diam. Praesent semper diam a efficitur iaculis. Nullam lacinia augue quis lorem accumsan tempus. Maecenas dapibus velit eu blandit pretium. Nullam posuere ut ipsum in commodo. Fusce fringilla quis turpis a placerat. Etiam hendrerit velit a lacus varius ornare.'];
@@ -178,6 +180,11 @@ function Edit(_ref) {
   const onChangeColumnRuleColor = val => {
     setAttributes({
       columnRuleColor: val
+    });
+  };
+  const onChangeDropCapColor = val => {
+    setAttributes({
+      dropCapColor: val
     });
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
@@ -242,6 +249,10 @@ function Edit(_ref) {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Separator colour', 'multi-columns'),
       value: columnRuleColor,
       onChange: onChangeColumnRuleColor
+    }, {
+      value: dropCapColor,
+      onChange: onChangeDropCapColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Drop-Cap colour', 'multi-columns')
     }]
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     style: columnStyles
@@ -455,7 +466,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/multi-columns","version":"0.1.0","title":"Multi Columns","category":"design","icon":"columns","description":"Example block scaffolded with Create Block tool.","parent":["core/post-content"],"keywords":["newspaper","columns","flow","text"],"supports":{"html":false,"color":{},"spacing":{"margin":true,"padding":true},"align":["wide","full"]},"styles":[{"name":"default","label":"Default","isDefault":true},{"name":"drop-cap","label":"Drop-Cap"},{"name":"box-shadow","label":"Box-Shadow"},{"name":"drop-cap-box-shadow","label":"Drop-Cap-Box-Shadow"}],"example":{"innerBlocks":[{"name":"core/heading","attributes":{"level":3,"content":"Heading"}},{"name":"core/paragraph","attributes":{"content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus, lectus non interdum cursus, arcu sapien mollis lacus, et tincidunt odio nisi ut purus. Duis eleifend, magna placerat faucibus tincidunt, orci nulla ornare tortor, eget egestas tortor nunc quis sem. Cras in tortor justo. Nulla consectetur leo vel blandit consectetur.Fusce quis sapien ante. Vestibulum non varius augue, et ultricies urna. Integer hendrerit suscipit nibh."}},{"name":"core/heading","attributes":{"level":4,"content":"Sub-heading"}},{"name":"core/paragraph","attributes":{"content":"Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras vestibulum mauris diam. Praesent semper diam a efficitur iaculis. Nullam lacinia augue quis lorem accumsan tempus."}}],"attributes":{"columnCount":3,"columnWidth":80},"viewportWidth":720},"textdomain":"multi-columns","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"columnRuleColor":{"type":"string","default":"#b8b8b8"},"columnRuleWidth":{"type":"integer","default":1},"columnRuleStyle":{"type":"string","default":"solid"},"columnGap":{"type":"integer","default":40},"columnWidth":{"type":"integer","default":200},"columnCount":{"type":"integer","default":4},"style":{"type":"object","default":{"color":{"text":"#3a3a3a","background":"#fbf9f4"},"spacing":{"padding":{"top":"20px","right":"20px","bottom":"20px","left":"20px"},"margin":{"top":"20px","right":"20px","bottom":"20px","left":"20px"}}}}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/multi-columns","version":"0.1.0","title":"Multi Columns","category":"design","icon":"columns","description":"Example block scaffolded with Create Block tool.","parent":["core/post-content"],"keywords":["newspaper","columns","flow","text"],"supports":{"html":false,"color":{},"spacing":{"margin":true,"padding":true},"align":["wide","full"]},"styles":[{"name":"default","label":"Default","isDefault":true},{"name":"drop-cap","label":"Drop-Cap"},{"name":"box-shadow","label":"Box-Shadow"},{"name":"drop-cap-box-shadow","label":"Drop-Cap-Box-Shadow"}],"example":{"innerBlocks":[{"name":"core/heading","attributes":{"level":3,"content":"Heading"}},{"name":"core/paragraph","attributes":{"content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus, lectus non interdum cursus, arcu sapien mollis lacus, et tincidunt odio nisi ut purus. Duis eleifend, magna placerat faucibus tincidunt, orci nulla ornare tortor, eget egestas tortor nunc quis sem. Cras in tortor justo. Nulla consectetur leo vel blandit consectetur.Fusce quis sapien ante. Vestibulum non varius augue, et ultricies urna. Integer hendrerit suscipit nibh."}},{"name":"core/heading","attributes":{"level":4,"content":"Sub-heading"}},{"name":"core/paragraph","attributes":{"content":"Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras vestibulum mauris diam. Praesent semper diam a efficitur iaculis. Nullam lacinia augue quis lorem accumsan tempus."}}],"attributes":{"columnCount":3,"columnWidth":80},"viewportWidth":720},"textdomain":"multi-columns","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"columnRuleColor":{"type":"string","default":"#b8b8b8"},"columnRuleWidth":{"type":"integer","default":1},"columnRuleStyle":{"type":"string","default":"solid"},"columnGap":{"type":"integer","default":10},"columnWidth":{"type":"integer","default":200},"columnCount":{"type":"integer","default":4},"dropCapColor":{"type":"string","default":"#b8b8b8"},"style":{"type":"object","default":{"color":{"text":"#3a3a3a","background":"#fbf9f4"},"spacing":{"padding":{"top":"20px","right":"20px","bottom":"20px","left":"20px"},"margin":{"top":"20px","right":"20px","bottom":"20px","left":"20px"}}}}}}');
 
 /***/ })
 

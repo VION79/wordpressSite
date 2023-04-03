@@ -101,7 +101,7 @@
     },
     "columnGap": {
       "type": "integer",
-      "default": 40
+      "default": 10
     },
     "columnWidth": {
       "type": "integer",
@@ -110,6 +110,10 @@
     "columnCount": {
       "type": "integer",
       "default": 4
+    },
+    "dropCapColor": {
+      "type": "string",
+      "default": "#b8b8b8"
     },
     "style": {
       "type": "object",

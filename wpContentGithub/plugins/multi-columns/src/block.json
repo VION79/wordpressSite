@@ -91,6 +91,8 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"attributes": {
+		
+		
 		"columnRuleColor": {
 			"type": "string",
 			"default": "#b8b8b8"
@@ -105,7 +107,7 @@
 		  },
 		"columnGap": {
 			"type": "integer",
-			"default": 40
+			"default": 10
 		  },
 		"columnWidth": {
 			"type": "integer",
@@ -115,6 +117,11 @@
 			"type": "integer",
 			"default": 4
 		},
+		"dropCapColor": {
+			"type": "string",
+			"default": "#b8b8b8"
+		},
+
 		"style": {
 			"type": "object",
 			"default": {
