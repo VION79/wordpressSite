@@ -48,7 +48,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		columnRuleStyle,
 		columnRuleWidth,
 		columnRuleColor,
-		dropCapColor
+		dropCapColor,
+		dropCapSize,
 	} = attributes;
 	const columnStyles = {
 		columnCount,
@@ -58,6 +59,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		columnRuleWidth,
 		columnRuleColor,
 		'--drop-cap-color': dropCapColor,
+		'--drop-cap-font-size': dropCapSize.fontSize,
+    	'--drop-cap-line-height': dropCapSize.lineHeight,
 	};
 	const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/image', 'core/pullquote', 'core/separator' ];
 	const TEMPLATE_PARAGRAPHS = [
@@ -91,7 +94,36 @@ export default function Edit( { attributes, setAttributes } ) {
 	const onChangeDropCapColor = ( val ) => {
 		setAttributes( { dropCapColor: val } );
 	};
-	
+	const onChangeDropCapSize = ( val ) => {
+		switch ( val ) {
+			case 'small':
+				setAttributes( {
+					dropCapSize: {
+						size: 'small',
+						fontSize: '3.8rem',
+						lineHeight: '3.5rem',
+					},
+				} );
+				break;
+			case 'large':
+				setAttributes( {
+					dropCapSize: {
+						size: 'large',
+						fontSize: '6.2rem',
+						lineHeight: '5.2rem',
+					},
+				} );
+				break;
+			default:
+				setAttributes( {
+					dropCapSize: {
+						size: 'small',
+						fontSize: '3.8rem',
+						lineHeight: '3.5rem',
+					},
+				} );
+		}
+	};
 	
 	return (
 		<>
@@ -179,6 +211,23 @@ export default function Edit( { attributes, setAttributes } ) {
 						},
 					] }>
 			</PanelColorSettings>
+			<PanelBody title={ __( 'Drop-Cap', 'multi-columns' ) } initialOpen={ false }>
+				<SelectControl
+					label={ __( 'Size', 'multi-columns' ) }
+					onChange={ onChangeDropCapSize }
+					value={ dropCapSize.size }
+					options={ [
+						{
+							label: __( 'Small', 'multi-columns' ),
+							value: 'small',
+						},
+						{
+							label: __( 'Large', 'multi-columns' ),
+							value: 'large',
+						},
+					] }
+				/>
+			</PanelBody>
 		</InspectorControls>
 			<div { ...useBlockProps( { style: columnStyles } ) }>
 					<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={MC_TEMPLATE} />
