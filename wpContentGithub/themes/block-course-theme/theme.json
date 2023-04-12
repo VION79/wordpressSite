@@ -89,34 +89,73 @@
 			"fluid": true,
 			"fontFamilies": [
 				{
-				  "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
-				  "name": "System Font",
-				  "slug": "system-font"
+					"fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
+					"name": "System Font",
+					"slug": "system-font"
 				},
 				{
-				  "fontFamily": "\"Open Sans\", sans-serif",
-				  "name": "Open Sans",
-				  "slug": "open-sans",
-				  "fontFace": [
-					{
-					  "fontFamily": "Open Sans",
-					  "fontWeight": "300 800",
-					  "fontStyle": "normal",
-					  "fontStretch": "normal",
-					  "src": [
-						"file:./assets/fonts/OpenSans.ttf"
-					  ]
-					},
-					{
-					  "fontFamily": "Open Sans",
-					  "fontWeight": "300 800",
-					  "fontStyle": "italic",
-					  "fontStretch": "normal",
-					  "src": [
-						"file:./assets/fonts/OpenSans-Italic.ttf"
-					  ]
-					}
-				  ]
+					"fontFamily": "\"Open Sans\", sans-serif",
+				  	"name": "Open Sans",
+				  	"slug": "open-sans",
+				  	"fontFace": [
+						{
+							"fontFamily": "Open Sans",
+							"fontWeight": "300 800",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [
+								"file:./assets/fonts/OpenSans.ttf"
+							]
+						}
+					]
+				},
+				{
+					"fontFamily": "\"Open Sans Italic\", sans-serif-italic",
+				  	"name": "Open Sans Italic",
+				  	"slug": "open-sans-italic",
+				  	"fontFace": [
+						{
+							"fontFamily": "Open Sans Italic",
+							"fontWeight": "300 800",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [
+								"file:./assets/fonts/OpenSans-Italic.ttf"
+							]
+						}
+					]
+				},			
+				{
+					"fontFamily": "\"Playfair Display\", play-fair-display",
+				  	"name": "Playfair Display",
+				  	"slug": "play-fair-display",
+				  	"fontFace": [
+						{
+							"fontFamily": "Playfair Display",
+							"fontWeight": "300 800",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [
+								"file:./assets/fonts/PlayfairDisplay.ttf"
+							]
+						}
+					]
+				},
+				{
+					"fontFamily": "\"Playfair Display Italic\", play-fair-display-italic",
+				  	"name": "Playfair Display Italic",
+				  	"slug": "play-fair-display-italic",
+				  	"fontFace": [
+						{
+							"fontFamily": "Playfair Display Italic",
+							"fontWeight": "300 800",
+							"fontStyle": "italic",
+							"fontStretch": "normal",
+							"src": [
+								"file:./assets/fonts/PlayfairDisplay-Italic.ttf"
+							]
+						}
+					]
 				}
 			],
 			"fontSizes": [
@@ -244,7 +283,10 @@
 			"core/quote": {
 				"border": {
 					"width": "1px"
-				}
+				},
+				"typography": {
+                    "fontFamily": "var( --wp--preset--font-family--play-fair-display )"
+                }
 			},
 			"core/site-title": {
 				"elements": {
@@ -348,6 +390,7 @@
 					"text": "var(--wp--preset--color--secondary)"
 				},
 				"typography": {
+					"fontFamily": "var( --wp--preset--font-family--play-fair-display )",
 					"fontWeight": "300",
 					"letterSpacing": "-0.02rem",
 					"lineHeight": "1.4",
@@ -380,7 +423,7 @@
 			}
 		},
 		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--system-font)",
+			"fontFamily": "var(--wp--preset--font-family--open-sans)",
 			"fontSize": "var(--wp--preset--font-size--medium)",
 			"lineHeight": "1.6"
 		}
