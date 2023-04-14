@@ -5,7 +5,8 @@
  * Categories: featured, block-course-theme
  */
 ?>
-<!-- wp:cover {"overlayColor":"contrast","align":"full"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/hero-background.webp' ) ); ?>","dimRatio":50,"overlayColor":"tertiary","isDark":false,"align":"full"} -->
+<div class="wp-block-cover alignfull is-light"><span aria-hidden="true" class="wp-block-cover__background has-tertiary-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/hero-background.webp' ) ); ?>" data-object-fit="cover"/>
 <div class="wp-block-cover alignfull"><span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"style":{"spacing":{"blockGap":"2.5rem"}},"layout":{"type":"constrained","wideSize":"%","contentSize":"75%"}} -->
 <div class="wp-block-group"><!-- wp:heading {"textAlign":"center"} -->
 <h2 class="has-text-align-center">Welcome to My Site</h2>
