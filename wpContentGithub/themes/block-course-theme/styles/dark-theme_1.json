@@ -1,0 +1,23 @@
+{
+	"styles": {
+		"color": {
+			"background": "#101517",
+			"text": "var:preset|color|primary"
+		},
+		"elements": {
+			"heading": {
+				"color": {
+					"text": "#9ec2e6"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "#9ec2e6"
+				}
+			}
+		}
+	},
+	"title": "Dark Theme 2",
+	"version": 2,
+	"$schema": "https://schemas.wp.org/wp/6.2/theme.json"
+}
