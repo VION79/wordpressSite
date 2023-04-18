@@ -34,6 +34,18 @@
 	],
 	"settings": {
 		"appearanceTools": true,
+		"border": {
+			"color": true,
+			"width": true,
+			"radius": true
+		},
+		"blocks": {
+            "core/group": {
+                "border": {
+                    "radius": false
+                }
+            }
+        },
 		"color": {
 			"palette": [
 				{
@@ -63,10 +75,12 @@
 				}
 			]
 		},
+
 		"layout": {
 			"contentSize": "650px",
 			"wideSize": "1000px"
 		},
+
 		"spacing": {
 			"spacingScale": {
 				"increment": 0.5,
