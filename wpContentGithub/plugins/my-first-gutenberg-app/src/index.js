@@ -4,7 +4,7 @@ import { decodeEntities } from '@wordpress/html-entities';
 import { SearchControl, Spinner, Button, Modal, TextControl } from '@wordpress/components';
 
 import { useState, render } from '@wordpress/element';
-import { useSelect } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { store as coreDataStore } from '@wordpress/core-data';
 
 function PageEditButton({ pageId }) {
@@ -93,11 +93,19 @@ function PagesList( { hasResolved, pages } ) {
 }
 
 export function EditPageForm( { pageId, onCancel, onSaveFinished } ) {
+    const page = useSelect(
+        select => select( coreDataStore ).getEditedEntityRecord( 'postType', 'page', pageId ),
+        [ pageId ]
+    );
+    const { editEntityRecord } = useDispatch( coreDataStore );
+    const handleChange = ( title ) => editEntityRecord( 'postType', 'page', pageId, { title } );
+ 
     return (
         <div className="my-gutenberg-form">
             <TextControl
-                value=''
-                label='Page title:'
+                label="Page title:"
+                value={ page.title }
+                onChange={ handleChange }
             />
             <div className="form-buttons">
                 <Button onClick={ onSaveFinished } variant="primary">
