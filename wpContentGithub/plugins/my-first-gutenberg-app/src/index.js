@@ -93,17 +93,28 @@ function PagesList( { hasResolved, pages } ) {
 }
 
 export function EditPageForm( { pageId, onCancel, onSaveFinished } ) {
-    const page = useSelect(
-        select => select( coreDataStore ).getEditedEntityRecord( 'postType', 'page', pageId ),
+    
+    const { isSaving, hasEdits, lastError, page } = useSelect(
+        select => ({
+            isSaving: select( coreDataStore ).isSavingEntityRecord( 'postType', 'page', pageId ),
+            hasEdits: select( coreDataStore ).hasEditsForEntityRecord( 'postType', 'page', pageId ),
+            page: select( coreDataStore ).getEditedEntityRecord( 'postType', 'page', pageId ),
+            lastError: select( coreDataStore ).getLastEntitySaveError( 'postType', 'page', pageId )
+        }),
         [ pageId ]
     );
+
     const { editEntityRecord } = useDispatch( coreDataStore );
+    
     const handleChange = ( title ) => editEntityRecord( 'postType', 'page', pageId, { title } );
     
     const { saveEditedEntityRecord } = useDispatch( coreDataStore );
-        const handleSave = async () => {
-        await saveEditedEntityRecord( 'postType', 'page', pageId );
-        onSaveFinished();
+    
+    const handleSave = async () => {
+        const updatedRecord = await saveEditedEntityRecord( 'postType', 'page', pageId );
+        if ( updatedRecord ) {
+            onSaveFinished();
+        }
     };
 
     return (
@@ -114,13 +125,29 @@ export function EditPageForm( { pageId, onCancel, onSaveFinished } ) {
                 onChange={ handleChange }
             />
             <div className="form-buttons">
-                <Button onClick={ handleSave } variant="primary">
-                    Save
+                
+                <Button onClick={ handleSave } variant="primary" disabled={ ! hasEdits || isSaving }>
+                { isSaving ? (
+                    <>
+                        <Spinner/>
+                        Saving
+                    </>
+                ) : 'Save' }
                 </Button>
-                <Button onClick={ onCancel } variant="tertiary">
+
+                <Button
+                    onClick={ onCancel }
+                    variant="tertiary"
+                    disabled={ isSaving }
+                >
                     Cancel
                 </Button>
             </div>
+            { lastError ? (
+                <div className="form-error">
+                    Error: { lastError.message }
+                </div>
+            ) : false }
         </div>
     );
 }
