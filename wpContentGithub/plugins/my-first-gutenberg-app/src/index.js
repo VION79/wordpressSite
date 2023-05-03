@@ -7,6 +7,27 @@ import { useState, render } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { store as coreDataStore } from '@wordpress/core-data';
 
+function CreatePageButton() {
+    const [isOpen, setOpen] = useState( false );
+    const openModal = () => setOpen( true );
+    const closeModal = () => setOpen( false );
+    return (
+        <>
+            <Button onClick={ openModal } variant="primary">
+                Create a new Page
+            </Button>
+            { isOpen && (
+                <Modal onRequestClose={ closeModal } title="Create a new page">
+                    <CreatePageForm
+                        onCancel={ closeModal }
+                        onSaveFinished={ closeModal }
+                    />
+                </Modal>
+            ) }
+        </>
+    );
+}
+ 
 function PageEditButton({ pageId }) {
     const [ isOpen, setOpen ] = useState( false );
     const openModal = () => setOpen( true );
@@ -56,8 +77,11 @@ function MyFirstApp() {
   
     return (
         <div>
-            <SearchControl onChange={ setSearchTerm } value={ searchTerm } />
-            <PagesList hasResolved={ hasResolved } pages={ pages } />
+            <div className="list-controls">
+                <SearchControl onChange={ setSearchTerm } value={ searchTerm }/>
+                <CreatePageButton/>
+            </div>
+            <PagesList hasResolved={ hasResolved } pages={ pages }/>
         </div>
     );
 }
@@ -92,6 +116,44 @@ function PagesList( { hasResolved, pages } ) {
     );
 }
 
+export function CreatePageForm( { onCancel, onSaveFinished } ) {
+    const [title, setTitle] = useState();
+    
+    const { lastError, isSaving } = useSelect(
+        ( select ) => ( {
+            lastError: select( coreDataStore )
+                .getLastEntitySaveError( 'postType', 'page' ),
+            isSaving: select( coreDataStore )
+                .isSavingEntityRecord( 'postType', 'page' ),
+        } ),
+        []
+    );
+
+    const { saveEntityRecord } = useDispatch( coreDataStore );
+    const handleSave = async () => {
+        const savedRecord = await saveEntityRecord(
+            'postType',
+            'page',
+            { title, status: 'publish' }
+        );
+        if ( savedRecord ) {
+            onSaveFinished();
+        }
+    };
+
+    return (
+        <PageForm
+            title={ title }
+            onChangeTitle={ setTitle }
+            hasEdits={ !!title }
+            onSave={ handleSave }
+            lastError={ lastError }
+            onCancel={ onCancel }
+            isSaving={ isSaving }            
+        />
+    );
+}
+
 export function EditPageForm( { pageId, onCancel, onSaveFinished } ) {
     
     const { isSaving, hasEdits, lastError, page } = useSelect(
@@ -118,23 +180,44 @@ export function EditPageForm( { pageId, onCancel, onSaveFinished } ) {
     };
 
     return (
+        <PageForm
+            title={ page.title }
+            onChangeTitle={ handleChange }
+            hasEdits={ hasEdits }
+            lastError={ lastError }
+            isSaving={ isSaving }
+            onCancel={ onCancel }
+            onSave={ handleSave }
+        />        
+    );
+}
+
+export function PageForm( { title, onChangeTitle, hasEdits, lastError, isSaving, onCancel, onSave } ) {
+    return (
         <div className="my-gutenberg-form">
             <TextControl
                 label="Page title:"
-                value={ page.title }
-                onChange={ handleChange }
+                value={ title }
+                onChange={ onChangeTitle }
             />
+            { lastError ? (
+                <div className="form-error">Error: { lastError.message }</div>
+            ) : (
+                false
+            ) }
             <div className="form-buttons">
-                
-                <Button onClick={ handleSave } variant="primary" disabled={ ! hasEdits || isSaving }>
-                { isSaving ? (
-                    <>
-                        <Spinner/>
-                        Saving
-                    </>
-                ) : 'Save' }
+                <Button
+                    onClick={ onSave }
+                    variant="primary"
+                    disabled={ !hasEdits || isSaving }
+                >
+                    { isSaving ? (
+                        <>
+                            <Spinner/>
+                            Saving
+                        </>
+                    ) : 'Save' }
                 </Button>
-
                 <Button
                     onClick={ onCancel }
                     variant="tertiary"
@@ -143,15 +226,9 @@ export function EditPageForm( { pageId, onCancel, onSaveFinished } ) {
                     Cancel
                 </Button>
             </div>
-            { lastError ? (
-                <div className="form-error">
-                    Error: { lastError.message }
-                </div>
-            ) : false }
         </div>
     );
 }
-
 
   
 window.addEventListener(
