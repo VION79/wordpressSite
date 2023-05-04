@@ -1,11 +1,29 @@
 
 import { decodeEntities } from '@wordpress/html-entities';
   
-import { SearchControl, Spinner, Button, Modal, TextControl } from '@wordpress/components';
+import { SearchControl, Spinner, Button, Modal, TextControl, SnackbarList } from '@wordpress/components';
+import { store as noticesStore} from '@wordpress/notices';
 
-import { useState, render } from '@wordpress/element';
+import { useState, render, useEffect } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { store as coreDataStore } from '@wordpress/core-data';
+
+function Notifications() {
+    const notices = useSelect(
+        ( select ) => select( noticesStore ).getNotices(),
+        []
+    );
+    const { removeNotice } = useDispatch( noticesStore );
+    const snackbarNotices = notices.filter( ({ type }) => type === 'snackbar' );
+ 
+    return (
+        <SnackbarList
+            notices={ snackbarNotices }
+            className="components-editor-notices__snackbar"
+            onRemove={ removeNotice }
+        />
+    );
+}
 
 function CreatePageButton() {
     const [isOpen, setOpen] = useState( false );
@@ -82,7 +100,50 @@ function MyFirstApp() {
                 <CreatePageButton/>
             </div>
             <PagesList hasResolved={ hasResolved } pages={ pages }/>
+            <Notifications />
         </div>
+    );
+}
+
+export function DeletePageButton ({ pageId, onCancel, onSaveFinished }) {
+        
+    const { createSuccessNotice, createErrorNotice } = useDispatch( noticesStore );
+
+    const { deleteEntityRecord } = useDispatch( coreDataStore );
+    
+    const { isDeleting } = useSelect(
+        select => ({
+            isDeleting: select( coreDataStore ).isDeletingEntityRecord( 'postType', 'page', pageId ),
+        }),
+        [ pageId ]
+    );
+    const { getLastEntityDeleteError } = useSelect( coreDataStore )
+ 
+    const handleDelete = async () => {
+        const success = await deleteEntityRecord( 'postType', 'page', pageId);
+        if ( success ) {
+            createSuccessNotice( "The page was deleted!", {
+                type: 'snackbar',
+            } );
+        }
+        else {
+            const lastError = getLastEntityDeleteError( 'postType', 'page', pageId );
+            const message = ( lastError?.message || 'There was an error.' ) + ' Please refresh the page and try again.'
+            createErrorNotice( message, {
+                type: 'snackbar',
+            } );
+        }
+    }
+
+    return (
+        <Button variant="primary" onClick={ handleDelete } disabled={ isDeleting }>
+            { isDeleting ? (
+                <>
+                    <Spinner />
+                    Deleting...
+                </>
+            ) : 'Delete' }
+        </Button>
     );
 }
   
@@ -108,6 +169,8 @@ function PagesList( { hasResolved, pages } ) {
                         <td>{ decodeEntities( page.title.rendered ) }</td>
                         <td>
                             <PageEditButton pageId={ page.id } />
+                            <DeletePageButton pageId={ page.id }/>
+
                         </td>
                     </tr>
                 ) ) }
@@ -230,7 +293,7 @@ export function PageForm( { title, onChangeTitle, hasEdits, lastError, isSaving,
     );
 }
 
-  
+ 
 window.addEventListener(
     'load',
     function () {
