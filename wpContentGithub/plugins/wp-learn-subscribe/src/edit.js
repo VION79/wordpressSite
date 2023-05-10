@@ -32,8 +32,8 @@ import './editor.scss';
 export default function Edit() {
 	return (
 		<div {...useBlockProps()}>
-			<h2>Subscribe!</h2> 
-			<p>Visit our <a href="/subscribe">subscribe page</a> and sign up to get notified</p> 
+    		<h2 className={"subscribe-header"}>Subscribe!</h2>
+    		<p>Visit our <a href="/subscribe">subscribe page</a> and sign up to get notified</p>
 		</div>
 	);
 }
