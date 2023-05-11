@@ -1,3 +1,5 @@
+
+
 /**
  * Retrieves the translation of text.
  *
@@ -11,7 +13,14 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+
+/** */
+import {
+    TextControl,
+	PanelBody,
+	Panel
+} from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,11 +38,22 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
-	return (
-		<div {...useBlockProps()}>
-    		<h2 className={"subscribe-header"}>Subscribe!</h2>
-    		<p>Visit our <a href="/subscribe">subscribe page</a> and sign up to get notified</p>
+export default function Edit( {attributes, setAttributes} ) {
+    return (
+        <div {...useBlockProps()}>
+            <h2 className={"subscribe-header"}>{attributes.heading}</h2>
+            <p>Visit our <a href="/subscribe">subscribe page</a> and sign up to get notified</p>
+			<InspectorControls key="setting">
+				<Panel>
+					<PanelBody title="Subscribe attributes" initialOpen={true}>
+						<TextControl className="blocks-base-control__input"
+									label={"Heading"}
+									value={attributes.heading}
+									onChange={(val) => setAttributes({heading: val})}
+						/>
+					</PanelBody>
+				</Panel>
+			</InspectorControls>
 		</div>
-	);
+    );
 }

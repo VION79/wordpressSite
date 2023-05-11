@@ -13,5 +13,15 @@
 	"textdomain": "wp-learn-subscribe",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css"
-  }
+	"style": "file:./style-index.css",
+	
+	"attributes": {
+		"heading": {
+			"type": "string",
+				"default": "Subscribe!"
+		}
+	}
+}
+
+
+  
